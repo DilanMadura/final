@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+        Remove this if you use the .htaccess -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>Home</title>
+        <meta name="description" content="">
+        <meta name="author" content="Dilan Madura">
+
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+        <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+        <link rel="stylesheet" href="tda.css" />
+
+        <!-- jquery -->
+        <script src="libs2/libs/js/jquery.js"></script>
+
+        <!-- other -->
+        <script src="libs2/libs/js/other.js"></script>    
+
+        <script>
+            function insert_val()
+            {
+                if (get_val('date') === '')
+                {
+                    alert('date is required');
+                }
+                else if (get_val('destination') === '')
+                {
+                    alert('destination is required');
+                }
+                else if (get_val('hotel') === '')
+                {
+                    alert('hotel is required');
+                }
+                else if (get_val('board_basis') === '')
+                {
+                    alert('board basis is required');
+                }
+                else if (get_val('room_type') === '')
+                {
+                    alert('room type is required');
+                }
+                else if (get_val('population') === '')
+                {
+                    alert('population is required');
+                }
+                else
+                {
+                    alert();
+                    return false;
+                    var json_data = {
+                        date: get_val('date'),
+                        destination: get_val('destination'),
+                        hotel: get_val('hotel'),
+                        board_basis: get_val('board_basis'),
+                        room_type: get_val('room_type'),
+                        population: get_val('population')
+                    };
+
+                    ajaxCall(json_data, function(result) {
+
+                        if (result === '1')
+                        {
+                            alert('successfully inserted');
+                        }
+                        else
+                        {
+                            alert('problem occured');
+                        }
+                    });
+                }
+            }
+            
+            function reset_fields ()
+            {
+                set_val('date', '');
+                set_val('destination', '');
+                set_val('hotel', '');
+                set_val('board_basis', '');
+                set_val('room_type', '');
+                set_val('population', '');
+            }
+        </script>		
+    </head>
+
+    <body>
+
+        <img src="11.jpg" / style="width: 1350px;height: 870px;position: absolute;filter: opacity(100%);">
+
+             <div id="m1"> </div>
+
+        <div style="left: 200px;top: 10px;height: 80px;width: 200px;position: absolute"><img src="dknew.png" style="width: 80px;height: 140px"/></div>
+
+        <div style="position: absolute;left: 1000px;top: 30px;height: 50px;width: 300px"></div>
+
+
+        <div style="left: 400px;top: 60px;font-size: 60px;color: #cc9933;position: absolute">Tourism Data Analyser</div>
+
+
+        <div id="m16"></div>
+        <a href="home.html"><img src="home1.png" id="m6"/></a>
+        <a href="login.html"><img src="lock.png" id="m6" style="top: 350px"/></a>
+        <a href="hotel_search/modules/advance_search/index.html"><img src="se.png"id="m6"style="top: 450px"/></a>
+        <a href="about_us.html"><img src="about.png" id="m6" style="top: 550px"/></a>
+        <a href="feedback.html"><img src="feed.png" id="m6" style="top: 650px"/></a>
+        <a href="contact.html"><img src="cont.png"id="m6"style="top: 750px"/></a>
+
+
+        <div style="width: 590px;background-color: #0066cc;top:160px;left: 608px;height: 30px;padding-top: 5px;position: absolute;text-align: center;font-size: 20px"><a href="view_fedback.html" style="text-decoration:none;color: white"> View Feedback</a></div>
+        <div style="width: 590px;background-color: #0066cc;top:160px;left: 15px;height: 30px;padding-top: 5px;position: absolute;text-align: center;font-size: 20px"><a href="add_tourist.html" style="text-decoration:none;color: white"> Add New Tourist Details</a></div>
+
+
+
+
+        <div id="m15"></div>
+        <p style="color: #0066cc;text-align: center;font-size: 30px;top: 200px;left: 350px;position: absolute">Add Tourist Details</p>
+        <table style="width: 600px;height: 700px;padding: 100px;top: 180px;left: 250px;position: absolute">
+
+            <!--<tr>
+                    <td>Tourist Name</td>
+                    <td><input type="text" id="name" style="width: 200px" /></td>
+            </tr>-->
+            <tr>
+                <td>Date</td>
+                <td><input type="date" id="date" style="width: 200px" /></td>
+            </tr>
+            <!--<tr>
+                    <td>Departue Date</td>
+                    <td><input type="date" style="width: 200px"/></td>
+            </tr>-->
+
+
+            <tr><td>Location</td>
+                <!--<td><select id="destination" style="width: 200px">
+                        <option>colombo</option>
+                        <option>kandy</option>
+                </select></td>-->
+                <td><input type="text" id="destination" style="width: 200px"required /></td>
+            </tr>
+            <tr>
+                <td>Hotel</td>
+                <!--<td><input id="hotel" type="text" style="width: 200px"/></td>-->
+                <td><input type="text" id="hotel" style="width: 200px" /></td>
+            </tr>
+            <tr>
+                <td>Room Type Basic</td>
+                <!--<td><select id="room_type" style="width: 200px">
+                        <option>Delexe</option>
+                </select></td>-->
+                <td><input type="text" id="room_type" style="width: 200px"required /></td>
+            </tr>
+            <tr><td> Baisc</td>
+                <!--<td><select  id="board_basis" style="width: 200px">
+                        <option>BB</option>
+                        <option>HB</option>
+                        <option>FB</option>
+                        <option>RO</option>
+                </select></td>-->
+                <td><input type="text" id="board_basis" style="width: 200px" required/></td>
+            </tr>
+
+            <tr><td> Number Tourists</td>
+                <!--<td><select  id="board_basis" style="width: 200px">
+                        <option>BB</option>
+                        <option>HB</option>
+                        <option>FB</option>
+                        <option>RO</option>
+                </select></td>-->
+                <td><input type="text" id="population" style="width: 200px" required/></td>
+            </tr>
+
+            <tr><td><input type="button" onclick="insert_val()" value="Save" style="background-color: #0066cc;height: 30px;width: 100px;border-radius: 20px" /></td>
+                <td><input type="button" value="Reset"  onclick="reset_fields()" style="background-color: #0066cc;height: 30px;width: 100px;border-radius: 20px" /></td>
+            </tr>
+        </table>
+
+        <div id="m14">
+            <p>
+                © Copyright TIPPER. All Rights Reserved
+            </p>
+        </div>		
+    </body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Board Basis Prediction</title>
+		<meta name="description" content="">
+		<meta name="author" content="Dilan Madura">
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		
+		<link rel="stylesheet" href="tda.css" />
+		
+                <!-- charts loarder -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <!-- jquery -->
+        <script src="libs/jquery.js"></script>
+
+        <script type="text/javascript">
+            google.charts.load('current', {'packages': ['bar']});
+            google.charts.setOnLoadCallback(drawStuff('4'));
+
+            function drawStuff(month) {
+
+                var arr = [];
+                arr[0] = ['board_basis', 'Population'];
+
+                var json_data = {
+                    month: month,
+                    board_basis_analyze: "1"
+                };
+
+                ajaxCall(json_data, function(result) {
+                    
+                    result = $.parseJSON('[' + result + ']');
+                    
+                    result = result[0];
+
+                    for (var i = 0; i < result.length; i++) {
+
+                        arr[i+1] = [result[i]['board_basis'], parseInt(result[i]['population'])];
+                    }
+
+                    var data = new google.visualization.arrayToDataTable(arr);
+
+                    var options = {
+                        title: 'Chess opening moves',
+                        width: 900,
+                        legend: {position: 'none'},
+                        chart: {title: 'Board Prediction',
+                            subtitle: 'Top Board Basis'},
+                        bars: 'horizontal', // Required for Material Bar Charts.
+                        axes: {
+                            x: {
+                                0: {side: 'top', label: 'Population'} // Top x-axis.
+                            }
+                        },
+                        bar: {groupWidth: "90%"}
+                    };
+
+                    var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+                    chart.draw(data, options);
+                });
+
+            }
+            ;
+
+            function ajaxCall(data_json, callBack) {
+
+                $.ajax({
+                    type: 'post',
+                    url: "libs2/script.php",
+                    data: data_json,
+                    timeout: 10000, // sets timeout for the request (10 seconds)
+
+                    error: function(xhr, status, error) {
+
+                        alert('Error: ' + xhr.status + ' - ' + error);
+
+                    },
+                    success: function(result) {
+
+                        if (callBack && typeof(callBack) === "function") {
+//JSON.parse(result)
+                            callBack(result);
+
+                        }
+
+                    }
+
+                });
+
+            }
+            function test(val) {
+                alert(val);
+            }
+        </script>
+
+	</head>
+
+	<body>
+            
+            
+        <img src="11.jpg" / style="width: 1350px;height: 870px;position: absolute">
+
+        <div id="m1"> </div>
+
+        <div style="left: 200px;top: 10px;height: 80px;width: 200px;position: absolute"><img id="j" src="dknew.png"style="width: 80px;height: 140px"/></div>
+
+        <div style="position: absolute;left: 1000px;top: 30px;height: 50px;width: 300px"></div>
+
+
+        <div style="left: 400px;top: 60px;font-size: 60px;color: #CC9933;position: absolute">Tourism Data Analyser</div>
+
+
+
+        <div id="m16"></div>
+		<a href="home.html"><img src="home1.png"id="m6"/></a>
+		<a href="login.html"><img src="lock.png"id="m6"style="top: 350px"/></a>
+		<a href="cont_us.html"><img src="cont.png"id="m6"style="top: 450px"/></a>
+		<a href="aboutus.html"><img src="about.png"id="m6"style="top: 550px"/></a>
+		<a href="feedback.html"><img src="feed.png"id="m6"style="top: 650px"/></a>
+		<a href="contact.html"><img src="cont.png"id="m6"style="top: 750px"/></a>
+		
+	
+         <!-- <div id="m12"> </div>-->
+		<div style="position: absolute;	left: 100px;top: 200px;	width: 1050px;height: 650px;	background-color: #000033;	filter: opacity(30%);"></div>
+        <div id="m10"><h1 style="padding-top: 20px">Board Basis Prediction</h2>
+                <!--<img src="Destination Anylze.png" style="width: 600px;height: 360px"/>-->
+                
+      <!-- DROP DOWN BUTTON -->
+                <select onchange="drawStuff(this.value)">
+                    <option value="4">2016-04</option>
+                    <option value="5">2016-05</option>
+                    <option value="6">2016-06</option>
+                    <option value="7">2016-07</option>
+                    <option value="8">2016-08</option>
+                </select>
+                <div id="top_x_div" style="width: 900px; height: 500px;padding-left:80px"></div> 
+        </div>  
+		
+		<!--<img src="t1.jpg" / style="width: 1350px;height: 670px;position: absolute">
+		
+		<div id="m1"> </div>
+		
+		<div style="left: 200px;top: 10px;height: 80px;width: 200px;position: absolute"><img id="j" src="dknew.png"style="width: 80px;height: 140px"/></div>
+		
+		<div style="position: absolute;left: 1000px;top: 30px;height: 50px;width: 300px"></div>
+
+		
+		<div style="left: 400px;top: 60px;font-size: 60px;color: #CC9933;position: absolute">Tourism Data Analyser</div>
+		
+		
+		
+		<a href="home.html"><img src="home1.png"id="m6"/></a>
+		<a href="login.html"><img src="lock.png"id="m6"style="top: 250px"/></a>
+		<a href="cont_us.html"><img src="cont.png"id="m6"style="top: 450px"/></a>
+		<a href="about_us.html"><img src="about.png"id="m6"style="top: 550px"/></a>
+		
+		<div id="m12"> </div>
+		
+		<div id="m10"><h1>Board Basis Prediction</h2>
+			<img src="Board Basis Prediction.png" style="width: 600px;height: 360px"/>
+		</div>-->
+		
+			
+			
+		<!--<div id="m11">
+			<form>
+				
+			<h2> All Board Basis Types with Rank</h2>
+			
+			<p>1- Room Onlyh</p>
+			<p>2 - Full Borad</p>
+			<p>3 - Harf Borad</p>
+			<p>4 - Bed and Breakfast</p>
+
+
+
+			</form>
+		</div>-->
+
+
+		<div id="m14">
+			<p>
+				© Copyright TIPPER. All Rights Reserved.
+			</p>
+		</div>
+		
+	</body>
+</html>

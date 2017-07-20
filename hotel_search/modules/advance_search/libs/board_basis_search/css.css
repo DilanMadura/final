@@ -1,0 +1,35 @@
+.div_board_basis_input {
+	
+	width: 160px;
+	position: relative;
+	display: inline-block;
+}
+
+.text_board_basis_search {
+	
+	width: 100%;
+}
+
+.div_board_basis_list {
+                
+	position: absolute; 
+	background: rgb(230, 230, 230) none repeat scroll 0% 0%;
+	max-height: 200px;
+	width: 100%;
+	overflow: auto;
+        z-index: 1;
+}            
+
+.div_board_basis_list_item_new {
+                
+	width:100%; 
+	color:#0066ff; 
+	cursor:pointer;
+}
+
+.div_board_basis_list_item {
+                
+	width:100%; 
+	color:#39404c; 
+	cursor:pointer;
+}

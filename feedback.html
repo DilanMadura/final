@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+        Remove this if you use the .htaccess -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>Home</title>
+        <meta name="description" content="">
+        <meta name="author" content="Dilan Madura">
+
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+        <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+        <link rel="stylesheet" href="tda.css" />
+
+        <!-- jquery -->
+        <script src="libs2/libs/js/jquery.js"></script>
+
+        <!-- other -->
+        <script src="libs2/libs/js/other.js"></script>   
+
+        <script>
+
+            //alert('working');
+
+
+            function insert_val()
+            {
+                if (get_val('feedback') === '')
+                {
+                    alert('feedback is required');
+                }
+                else if (get_val('name') === '')
+                {
+                    alert('name is required');
+                }
+                else if (get_val('country') === '')
+                {
+                    alert('country is required');
+                }
+                else if (get_val('email') === '')
+                {
+                    alert('email is required');
+                }
+                else
+                {
+
+                    var json_data = {
+                        feedback: get_val('feedback'),
+                        name: get_val('name'),
+                        country: get_val('country'),
+                        email: get_val('email')
+                    };
+
+                    ajaxCall(json_data, function(result) {
+
+                        if (result === '1')
+                        {
+                            alert('successfully inserted');
+                        }
+                        else
+                        {
+                            alert('problem occured');
+                        }
+                    });
+                }
+            }
+
+        </script>
+
+    </head>
+
+    <body>
+
+        <img src="11.jpg" / style="width: 1350px;height: 870px;position: absolute;filter: opacity(100%);">
+
+             <div id="m1"> </div>
+
+        <div style="left: 200px;top: 10px;height: 80px;width: 200px;position: absolute"><img src="dknew.png"style="width: 80px;height: 140px"/></div>
+
+        <div style="position: absolute;left: 1000px;top: 30px;height: 50px;width: 300px"></div>
+
+
+        <div style="left: 400px;top: 60px;font-size: 60px;color: #cc9933;position: absolute">Tourism Data Analyser</div>
+
+
+        <div id="m16"></div>
+        <a href="home.html"><img src="home1.png"id="m6"/></a>
+        <a href="login.html"><img src="lock.png"id="m6"style="top: 350px"/></a>
+        <a href="hotel_search/modules/advance_search/index.html"><img src="se.png"id="m6"style="top: 450px"/></a>
+        <a href="aboutus.html"><img src="about.png"id="m6"style="top: 550px"/></a>
+        <a href=""><img src="feed.png"id="m6"style="top: 650px; border-color:white;border-style:solid;border-radius:50px"/></a>
+        <a href="contact.html"><img src="cont.png"id="m6"style="top: 750px"/></a>
+
+
+
+        <div id="m15"></div>
+        <p style="color: white;text-align: center;font-size: 35px;top: 200px;left: 250px;position: absolute">Feedback</p>
+        <p style="color: white;text-align: center;font-size: 15px;top: 260px;left: 250px;position: absolute">Submit Your Ideas and Question</p>
+        <form>		
+            <table style="width: 600px;height: 700px;padding: 100px;top: 180px;left: 250px;position: absolute;color: white">
+                <tr><td>Feedback</td>
+                    <td><textarea id="feedback" style="width: 200px;height: 80px" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Your Name</td>
+                    <td><input type="text" id="name" style="width: 200px" required/></td>
+
+                </tr>
+                <tr>
+                    <td>County</td>
+                    <td><input type="text" id="country" style="width: 200px" required/></td>
+                </tr>
+                <tr>
+                    <td>Your Email</td>
+                    <td><input type="email" id="email" style="width: 200px" required/></td>
+                </tr>
+                <tr><td><input type="button" onclick="insert_val()" value="Save" style="background-color: #0066cc;height: 30px;width: 100px;border-radius: 20px" /></td>
+                    <td><input type="button" value="Reset" style="background-color: #0066cc;height: 30px;width: 100px;border-radius: 20px" /></td>
+					
+				
+				</tr>
+            </table>
+        </form>
+
+
+        <!--<script>/*var json_data = {
+                    feedback: get_val('feedback'),
+                    name: get_val('name'),
+                    country: get_val('country'),
+                    email: get_val('email')
+                };*/</script>-->
+
+
+
+        <div id="m14">
+            <p>
+                © Copyright TIPPER. All Rights Reserved
+            </p>
+        </div>		
+    </body>
+</html>

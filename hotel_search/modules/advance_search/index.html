@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Advance Search</title>
+
+        <!-- jquery -->
+        <script src="../../libs/js/jquery.js"></script>
+
+        <!-- other -->
+        <script src="../../libs/js/other.js"></script>    
+
+        <!-- validation -->
+        <script src="../../libs/js/validation.js"></script>  
+
+
+        <!-- startup -->
+        <script src="libs/startup/js.js"></script>
+
+        <!-- destination search -->
+        <script src="libs/destination_search/js.js"></script>
+        <link rel="stylesheet" type="text/css" href="libs/destination_search/css.css">
+
+        <!-- room type search -->
+        <script src="libs/room_type_search/js.js"></script>
+        <link rel="stylesheet" type="text/css" href="libs/room_type_search/css.css">
+
+        <!-- board basis search -->
+        <script src="libs/board_basis_search/js.js"></script>
+        <link rel="stylesheet" type="text/css" href="libs/board_basis_search/css.css">
+
+        <!-- Item Table -->
+        <script src="libs/item_table/js.js"></script>
+        <link rel="stylesheet" type="text/css" href="libs/item_table/css.css">
+
+        <script>
+
+            window.onload = startup_func;
+
+            function clear_form()
+            {
+                set_val('selected_destination_name');
+                set_val('selected_destination_id');
+                set_val('text_destination');
+
+                set_val('selected_room_type_name');
+                set_val('selected_room_type_id');
+                set_val('text_room_type');
+
+                set_val('selected_board_basis_name');
+                set_val('selected_board_basis_id');
+                set_val('text_board_basis');
+            }
+
+        </script>
+
+    </head>
+
+    <body>
+
+        <img src="../../../11.jpg" style="width: 1350px;height: 870px;position: absolute;filter: opacity(100%);">
+
+        <div style="height: 150px; width: 1350px; background-color: #000033; position: absolute; filter: opacity(90%);"> </div>            
+
+
+        <div style="left: 200px;top: 10px;height: 80px;width: 200px;position: absolute"><img src="../../../dknew.png" style="width: 80px;height: 140px"/></div>
+
+        <div style="position: absolute;left: 1000px;top: 30px;height: 50px;width: 300px"></div>
+
+
+        <div style="left: 400px;top: 60px;font-size: 60px;color: #cc9933;position: absolute">Tourism Data Analyser</div>        
+
+        <div style="position: absolute; left: 1200px; top: 160px; width: 150px; height: 710px; background-color: black; filter: opacity(20%);"></div>
+        <a href="../../../home.html"><img src="../../../home1.png" style="position: absolute; top: 250px; left: 1250px; width: 70px; height: 70px; filter: opacity(90%);"/></a>
+        <a href="../../../login.html"><img src="../../../lock.png" style="position: absolute; left: 1250px; width: 70px; height: 70px; filter: opacity(90%); top: 350px;"/></a>
+        <a href=""><img src="../../../se.png" id="m6" style="position: absolute; left: 1250px; width: 70px; height: 70px; filter: opacity(90%); top: 450px;border-color:white;border-style:solid;border-radius:50px"/></a>
+        <a href="../../../aboutus.html"><img src="../../../about.png" id="m6" style="position: absolute; left: 1250px; width: 70px; height: 70px; filter: opacity(90%); top: 550px"/></a>
+		<a href="../../../feedback.html"><img src="../../../feed.png" id="m6" style="position: absolute; left: 1250px; width: 70px; height: 70px; filter: opacity(90%); top: 650px"/></a>
+		<a href="../../../contact.html"><img src="../../../cont.png" id="m6" style="position: absolute; left: 1250px; width: 70px; height: 70px; filter: opacity(90%); top: 750px"/></a>
+        
+		
+
+        <div style="position: absolute; left: 50px; top: 200px; width: 1120px; height: 600px; background-color: #000033; filter: opacity(20%);"></div>          
+
+        <table style="width: 600px;height: 700px;padding: 100px;top: 180px;left: 30px;position: absolute;color: white">
+            <tr>
+                <td style="display: table-cell; vertical-align: inherit;">
+                    Month :
+                </td>
+                <td>
+                    <select id="month"></select>
+                </td>
+            </tr>
+            <tr>
+                <td style="display: table-cell; vertical-align: inherit;">
+                    Destination : 
+                </td>
+                <td>
+                    <input type="hidden" id="selected_destination_name" value=""/>
+                    <input type="hidden" id="selected_destination_id" value=""/>
+                    <div id="div_destination_input" class="div_destination_input">
+                        <input type="text" id="text_destination" class="text_destination_search" autocomplete="off" onkeypress="input_validate_keypress(event, 39)" onkeyup="input_validate_focusout(event, 39);
+                destination_list_create(event)" onclick="destination_list_create(event)" onblur="destination_list_clear()" />
+                        <div id="div_destination_list" class="div_destination_list"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="display: table-cell; vertical-align: inherit;">
+                    Room Type :
+                </td>
+                <td>
+                    <input type="hidden" id="selected_room_type_name" value=""/>
+                    <input type="hidden" id="selected_room_type_id" value=""/>
+                    <div id="div_room_type_input" class="div_room_type_input">
+                        <input type="text" id="text_room_type" class="text_room_type_search" autocomplete="off" onkeypress="input_validate_keypress(event, 39)" onkeyup="input_validate_focusout(event, 39);
+                room_type_list_create(event);" onclick="room_type_list_create(event)" onblur="room_type_list_clear()" />
+                        <div id="div_room_type_list" class="div_room_type_list"></div>
+                    </div> 
+                </td>
+            </tr>
+            <tr>
+                <td style="display: table-cell; vertical-align: inherit;">
+                    Board Basis :
+                </td>
+                <td>
+                    <input type="hidden" id="selected_board_basis_name" value=""/>
+                    <input type="hidden" id="selected_board_basis_id" value=""/>
+                    <div id="div_board_basis_input" class="div_board_basis_input">
+                        <input type="text" id="text_board_basis" class="text_board_basis_search" autocomplete="off" onkeypress="input_validate_keypress(event, 39)" onkeyup="input_validate_focusout(event, 39);
+                board_basis_list_create(event);" onclick="board_basis_list_create(event)" onblur="board_basis_list_clear()" />
+                        <div id="div_board_basis_list" class="div_board_basis_list"></div>
+                    </div> 
+                </td>
+            </tr>
+            <tr>
+                <td style="display: table-cell; vertical-align: inherit;">
+                    <button onclick="clear_form()" style="background-color: #0066cc;height: 30px;width: 100px;border-radius: 20px">Clear</button>
+                </td>
+                <td style="display: table-cell; vertical-align: inherit;">
+                    <button onclick="table_load(1)" style="background-color: #0066cc;height: 30px;width: 100px;border-radius: 20px">Search</button>
+                </td>
+            </tr>
+            <tr>
+                <td style="display: table-cell; vertical-align: inherit;">
+                    Page :
+                </td>
+                <td>
+                    <select id="page" onchange="table_load(this.value);"></select>
+                </td>
+            </tr>             
+        </table>
+        
+        <div style="top: 310px;left: 510px;position: absolute;">
+            <div>
+                <div class="item_table_cell"><strong>Hotel</strong></div>
+                <div class="item_table_cell"><strong>Population</strong></div>            
+            </div>
+            <div id="table_body">
+
+            </div>
+        </div>
+
+
+        <footer class="position: absolute; top: 870px; width: 1350px; height: 40px; background-color: #0066cc; text-align: center; color: #000033;">
+            <p>
+                © Copyright TIPPER. All Rights Reserved
+            </p>
+        </footer>	
+    </body>
+</html>
